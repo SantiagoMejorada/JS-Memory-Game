@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Memory game</h1>
+
+        <!-- Timer and moves counter -->
+        <div class="game-stats">
+            <p id="timer">Time: 0s</p>
+            <p id="moves">Moves: 0s</p>
+        </div>
+
+        <!-- Game board -->
+        <div id="game-board" class="game-board">
+            <!-- Cards will be dynamically added here -->
+        </div>
+
+        <!-- Victory message (hidden by default) -->
+        <div id="victory-message" class="victory-message hidden">
+            <h2>You Won!!</h2>
+            <button id="restart-button">Restart</button>
+        </div>
+    </div>
+</body>
+
+</html>
