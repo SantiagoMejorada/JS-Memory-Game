@@ -37,9 +37,7 @@ function initializeBoard() {
         `;
 
         // Click event to flip card
-        card.addEventListener("click", () => {
-            card.classList.toggle("flipped");
-        });
+        card.addEventListener("click", () => handleCardFlip(card));
 
         // Append the card to the game board
         gameBoard.appendChild(card);
