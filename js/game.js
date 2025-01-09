@@ -4,14 +4,22 @@
 let flippedCards = [];
 let matchedCards = 0;
 let moves = 0;
+let timeInterval;
+let timeElapsed = 0;
 
 // Select game stats and victory message elements
 const movesCounter = document.getElementById("moves");
 const victoryMessage = document.getElementById("victory-message");
 const restartButton = document.getElementById("restart-button");
+const timerDisplay = document.getElementById("timer");
 
 // Handle card flip logic
 function handleCardFlip(card) {
+    if (flippedCards.length === 0 && moves === 0) {
+        // Start timer on the first move
+        startTimer();
+    }
+
     // Ignore clicks on already flipped or matched cards
     if (flippedCards.includes(card) || card.classList.contains("matched")) return;
 
@@ -59,10 +67,11 @@ function checkForMatch() {
 function updateMoves() {
     moves++;
     movesCounter.textContent = `Moves: ${moves}`
- }
+}
 
 // Display victory message
-function displayVictory() { 
+function displayVictory() {
+    stopTimer();
     victoryMessage.classList.remove("hidden");
 }
 
@@ -76,6 +85,19 @@ function restartGame() {
 
     //Function in board.js
     initializeBoard();
- }
+}
 
- restartButton.addEventListener("click", restartGame);
+function startTimer() {
+    timeElapsed = 0;
+    timerDisplay.textContent = "Time: 0s";
+    timeInterval = setInterval(() => {
+        timeElapsed++;
+        timerDisplay.textContent = `Time: ${timeElapsed}s`;
+    }, 1000);
+}
+
+function stopTimer() {
+    clearInterval(timeInterval);
+}
+
+restartButton.addEventListener("click", restartGame);
